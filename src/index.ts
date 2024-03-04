@@ -4,7 +4,6 @@ const Joi = require("joi");
 const users = require("./routes/users");
 const auth  = require("./routes/auth")
 const express = require("express");
-const  swaggerJSDoc = require('./swagger.config/swagger.js');
 import blogsRouter from "./routes/blogs"; 
 const app = express();
 if(!config.get("jwtPrivateKey")){

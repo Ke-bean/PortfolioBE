@@ -60,7 +60,7 @@ router.get("/", async (req: express.Request, res: express.Response) => {
   }
 });
 
-router.delete("/:id", async (req: express.Request, res: express.Response) => {
+router.delete("/:id",auth, isAdmin, async (req: express.Request, res: express.Response) => {
   try {
     const { id } = req.params;
     const deletedBlog = await deleteBlogById(id);
@@ -71,7 +71,7 @@ router.delete("/:id", async (req: express.Request, res: express.Response) => {
   }
 });
 
-router.put("/:id", async (req: express.Request, res: express.Response) => {
+router.put("/:id", auth, isAdmin, async (req: express.Request, res: express.Response) => {
   try {
     const { id } = req.params;
     const { title, description } = req.body;
