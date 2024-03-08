@@ -21,16 +21,16 @@ const swaggerDocumentation = {
             },
         },
     },
-    servers: [
-        {
-            url: "http://localhost:3000",
-            description: "Local dev environment"
-        },
-        {
-            url: "http://production",
-            description: "Production environment"
-        }
-    ],
+    // servers: [
+    //     {
+    //         url: "http://localhost:3000",
+    //         description: "Local dev environment"
+    //     },
+    //     {
+    //         url: "http://production",
+    //         description: "Production environment"
+    //     }
+    // ],
     tags: [
         {
             name: "Blogs",
