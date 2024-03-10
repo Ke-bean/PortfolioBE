@@ -4,6 +4,7 @@ const Joi = require("joi");
 const users = require("./routes/users");
 const auth  = require("./routes/auth")
 const express = require("express");
+const cors = require('cors');
 const swaggerDocumentation = require("./helper/documentation")
 // const  swaggerDoc = require("./utils/swagger");
 const swaggerDoc = require("swagger-ui-express");   
@@ -14,6 +15,7 @@ if(!config.get("jwtPrivateKey")){
     console.error("Fatal Error: JwtPrivateKey is not defined.")
     process.exit(1);
 }
+app.use(cors());
 app.use(express.json())
 app.use("/documentation", swaggerDoc.serve);
 app.use("/documentation", swaggerDoc.setup(swaggerDocumentation))

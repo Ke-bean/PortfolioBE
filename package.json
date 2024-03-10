@@ -43,6 +43,7 @@
     "@babel/preset-typescript": "^7.23.3",
     "@types/chai": "^4.3.12",
     "@types/chai-http": "^4.2.0",
+    "@types/jest": "^29.5.12",
     "@types/mocha": "^10.0.6",
     "@types/mongoose": "^5.11.97",
     "@types/nodemon": "^1.19.6",
@@ -55,6 +56,7 @@
     "mocha": "^10.3.0",
     "nodemon": "^3.1.0",
     "supertest": "^6.3.4",
+    "ts-jest": "^29.1.2",
     "ts-node": "^10.9.2"
   }
 }

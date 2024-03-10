@@ -37,7 +37,7 @@ const swaggerDocumentation ={
             description: "Blogs routes"
         },
     
-
+        
     ],
     paths:{
         ...authDoc,
