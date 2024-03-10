@@ -26,7 +26,7 @@ router.post("/", async (req, res) => {
     user.confirmPassword = await bcrypt_1.default.hash(user.confirmPassword, salt);
     await user.save();
     const token = user.generateAuthToken();
-    res.header("x-auth-token", token).send(lodash_1.default.pick(user, ['_id', "fullName", "email"]));
+    res.header("x-auth-token", token).json(lodash_1.default.pick(user, ['_id', "fullName", "email"]));
 });
 module.exports = router;
 //# sourceMappingURL=users.js.map
