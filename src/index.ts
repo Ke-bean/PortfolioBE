@@ -11,7 +11,7 @@ const swaggerDoc = require("swagger-ui-express");
 import blogsRouter from "./routes/blogs"; 
 
 export const app = express();
-app.use('/updloads', express.static("updloads"))
+app.use('/1709249851955-Promies Js-img.jpg', express.static("uploads"))
 app.use(cors());
 if(!config.get("jwtPrivateKey")){
     console.error("Fatal Error: JwtPrivateKey is not defined.")
