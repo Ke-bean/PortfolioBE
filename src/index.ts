@@ -10,7 +10,8 @@ const swaggerDocumentation = require("./helper/documentation")
 const swaggerDoc = require("swagger-ui-express");   
 import blogsRouter from "./routes/blogs"; 
 
-const app = express();
+export const app = express();
+app.use('/updloads', express.static("updloads"))
 app.use(cors());
 if(!config.get("jwtPrivateKey")){
     console.error("Fatal Error: JwtPrivateKey is not defined.")
@@ -29,6 +30,6 @@ app.use("/users", users);
 app.use("/auth", auth);
 app.use("/blogs", blogsRouter)
 const port = process.env.PORT || 3000;
-const server = app.listen(port , ()=> console.log(`listening on port ${port}...`))
+export const server = app.listen(port , ()=> console.log(`listening on port ${port}...`))
 // export default app;
 module.exports = { server, app }
