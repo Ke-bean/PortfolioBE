@@ -16,7 +16,7 @@ const swaggerDocumentation = require("./helper/documentation");
 const swaggerDoc = require("swagger-ui-express");
 const blogs_1 = __importDefault(require("./routes/blogs"));
 exports.app = express();
-exports.app.use('/1709249851955-Promies Js-img.jpg', express.static("uploads"));
+exports.app.use('/uploads', express.static("uploads"));
 exports.app.use(cors());
 if (!config.get("jwtPrivateKey")) {
     console.error("Fatal Error: JwtPrivateKey is not defined.");
@@ -29,7 +29,7 @@ mongoose.Promise = Promise;
 const db = config.get("db");
 mongoose.connect(db);
 mongoose.connection.on("connected", () => console.log(`connected to ${db}`));
-// mongoose.connection.on("error", (error: Error) => console.log(error));
+// mongoose.connection.on("error", (error: Error) =>    console.log(error));
 exports.app.use(express.json());
 exports.app.use("/users", users);
 exports.app.use("/auth", auth);

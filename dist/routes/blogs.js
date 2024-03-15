@@ -43,6 +43,17 @@ router.post('/', auth_1.auth, admin_1.isAdmin, upload.fields([
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
+router.get("/:id", async (req, res) => {
+    try {
+        const { id } = req.params;
+        const singleBlog = await (0, blog_1.getBlogById)(id);
+        return res.status(200).json(singleBlog);
+    }
+    catch (error) {
+        console.log(error);
+        return res.sendStatus(400);
+    }
+});
 router.use(express_1.default.json());
 router.get("/", async (req, res) => {
     try {
