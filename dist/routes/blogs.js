@@ -106,6 +106,17 @@ router.post("/:id/like", auth_1.auth, async (req, res) => {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
+router.get("/:id/likes", async (req, res) => {
+    try {
+        const { id } = req.params;
+        const likes = await (0, blog_1.getLikesForBlog)(id);
+        res.json({ likes });
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
 router.post("/:id/comment", auth_1.auth, async (req, res) => {
     try {
         const { id } = req.params;

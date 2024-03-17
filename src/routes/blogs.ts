@@ -1,5 +1,5 @@
 import express from "express";
-import { getBlog, deleteBlogById, getBlogById, createBlog, getBlogByTitle, likeBlog, addCommentToBlog, getAllCommentsForBlog } from "../models/blog";
+import { getBlog, deleteBlogById, getBlogById, createBlog, getBlogByTitle, likeBlog, addCommentToBlog, getAllCommentsForBlog, getLikesForBlog } from "../models/blog";
 const fs = require("fs");
 const router = express.Router();
 const multer = require("multer");
@@ -111,6 +111,18 @@ router.post("/:id/like", auth, async (req: CustomRequest, res: express.Response)
         await likeBlog(id, userId);
 
         res.sendStatus(200);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+router.get("/:id/likes", async (req: CustomRequest, res: express.Response) => {
+    try {
+        const { id } = req.params;
+
+        const likes = await getLikesForBlog(id);
+
+        res.json({ likes });
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Internal Server Error' });

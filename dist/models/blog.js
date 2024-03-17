@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.addCommentToBlog = exports.getAllCommentsForBlog = exports.likeBlog = exports.updateBlogById = exports.deleteBlogById = exports.createBlog = exports.getBlogById = exports.getBlogByTitle = exports.getBlog = exports.Blog = void 0;
+exports.addCommentToBlog = exports.getLikesForBlog = exports.getAllCommentsForBlog = exports.likeBlog = exports.updateBlogById = exports.deleteBlogById = exports.createBlog = exports.getBlogById = exports.getBlogByTitle = exports.getBlog = exports.Blog = void 0;
 const mongoose_1 = __importDefault(require("mongoose"));
 const BlogSchema = new mongoose_1.default.Schema({
     title: {
@@ -90,6 +90,14 @@ const getAllCommentsForBlog = async (blogId) => {
     return blog.comments;
 };
 exports.getAllCommentsForBlog = getAllCommentsForBlog;
+const getLikesForBlog = async (blogId) => {
+    const blog = await exports.Blog.findById(blogId);
+    if (!blog) {
+        throw new Error("Blog not found");
+    }
+    return blog.likes;
+};
+exports.getLikesForBlog = getLikesForBlog;
 const addCommentToBlog = async (blogId, userId, content) => {
     return exports.Blog.findByIdAndUpdate(blogId, {
         $push: {
