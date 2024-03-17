@@ -119,5 +119,16 @@ router.post("/:id/comment", auth_1.auth, async (req, res) => {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
+router.get("/:id/comments", async (req, res) => {
+    try {
+        const { id } = req.params;
+        const comments = await (0, blog_1.getAllCommentsForBlog)(id);
+        res.status(200).json(comments);
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
 exports.default = router;
 //# sourceMappingURL=blogs.js.map

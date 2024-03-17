@@ -76,7 +76,13 @@ export const likeBlog = async (blogId: string, userId: string) => {
         $push: { likedBy: userId }
     }, { new: true });
 };
-
+export const getAllCommentsForBlog = async (blogId: string) => {
+    const blog = await Blog.findById(blogId);
+    if (!blog) {
+        throw new Error("Blog not found");
+    }
+    return blog.comments;
+};
 export const addCommentToBlog = async (blogId: string, userId: string, content: string) => {
     return Blog.findByIdAndUpdate(blogId, {
         $push: {
