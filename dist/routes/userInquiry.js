@@ -24,5 +24,15 @@ router.post('/', async (req, res) => {
         res.status(500).send("Internal Server Error");
     }
 });
+router.get('/', async (req, res) => {
+    try {
+        const userInquiries = await userInquiry_1.UserInquiry.find();
+        res.status(200).json(userInquiries);
+    }
+    catch (error) {
+        console.error("Error fetching user inquiries:", error);
+        res.status(500).send("Internal Server Error");
+    }
+});
 module.exports = router;
 //# sourceMappingURL=userInquiry.js.map
