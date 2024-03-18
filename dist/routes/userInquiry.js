@@ -14,7 +14,8 @@ router.post('/', async (req, res) => {
         const userInquiry = new userInquiry_1.UserInquiry({
             name: req.body.name,
             email: req.body.email,
-            message: req.body.message
+            message: req.body.message,
+            createdAt: new Date()
         });
         await userInquiry.save();
         res.status(201).json("User inquiry sent successfully!");
@@ -26,7 +27,7 @@ router.post('/', async (req, res) => {
 });
 router.get('/', async (req, res) => {
     try {
-        const userInquiries = await userInquiry_1.UserInquiry.find();
+        const userInquiries = await userInquiry_1.UserInquiry.find().select('-_id name email message createdAt');
         res.status(200).json(userInquiries);
     }
     catch (error) {

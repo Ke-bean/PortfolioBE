@@ -19,6 +19,10 @@ const userInquirySchema = new mongoose_1.default.Schema({
     message: {
         type: String,
         required: true,
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now
     }
 });
 const UserInquiry = mongoose_1.default.model("UserInquiry", userInquirySchema);
