@@ -4,6 +4,7 @@ const Joi = require("joi");
 const users = require("./routes/users");
 const auth  = require("./routes/auth")
 const express = require("express");
+const userInquiry = require("./routes/userInquiry")
 const cors = require('cors');
 const swaggerDocumentation = require("./helper/documentation")
 // const  swaggerDoc = require("./utils/swagger");
@@ -29,6 +30,7 @@ app.use(express.json());
 app.use("/users", users);
 app.use("/auth", auth);
 app.use("/blogs", blogsRouter)
+app.use("/userInquiry", userInquiry)
 const port = process.env.PORT || 3000;
 export const server = app.listen(port , ()=> console.log(`listening on port ${port}...`))
 // export default app;
